@@ -1,0 +1,16 @@
+@mixin at2x($path1x, $path2x, $w: auto, $h: auto) {
+  background-image: url("#{$path1x}");
+  background-repeat: no-repeat;
+  @media all and (-webkit-min-device-pixel-ratio : 1.5),
+         all and (-o-min-device-pixel-ratio: 3/2),
+         all and (min--moz-device-pixel-ratio: 1.5),
+         all and (min-device-pixel-ratio: 1.5) {
+           background-image: url("#{$path2x}");
+           background-size: $w $h;
+  }
+}
+
+#l_holder {
+  @include at2x("/favicons/favicon16.png", "/favicons/favicon32.png", 16px, 16px);
+  background-color: #fff;
+}

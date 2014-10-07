@@ -27,13 +27,13 @@ describe StoryRepository do
       expect(hottest).not_to include tagged_story
     end
 
-    it 'includes story with 3 downvote and 1 upvotes' do
-      story = Story.make! downvotes: 3
+    it 'includes story with 2 downvote and 1 upvotes' do
+      story = Story.make! downvotes: 2
       expect(subject).to include story
     end
 
-    it 'excludes story with 4 downvotes and 1 upvotes' do
-      story = Story.make! downvotes: 4
+    it 'excludes story with 3 downvotes and 1 upvotes' do
+      story = Story.make! downvotes: 3
       expect(subject).not_to include story
     end
 
@@ -132,13 +132,13 @@ describe StoryRepository do
       expect(subject).to include tagged
     end
 
-    it 'includes story with 3 downvote and 1 upvotes' do
-      tagged.update_attribute :downvotes, 3
+    it 'includes story with 2 downvote and 1 upvotes' do
+      tagged.update_attribute :downvotes, 2
       expect(subject).to include tagged
     end
 
-    it 'excludes story with 4 downvotes and 1 upvotes' do
-      tagged.update_attribute :downvotes, 4
+    it 'excludes story with 3 downvotes and 1 upvotes' do
+      tagged.update_attribute :downvotes, 3
       expect(subject).not_to include tagged
     end
   end

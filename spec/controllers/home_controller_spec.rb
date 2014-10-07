@@ -1,7 +1,7 @@
 describe HomeController do
   before { Rails.cache.clear }
   before {
-    unless example.metadata[:skip_before]
+    unless RSpec.current_example.metadata[:skip_before]
       StoriesPaginator.any_instance.should_receive(:get).and_return [scope, true]
     end
   }
@@ -9,7 +9,7 @@ describe HomeController do
   describe 'GET index' do
     let(:scope) { double 'Hottest Scope' }
 
-    before { StoryRepository.any_instance.should_receive(:hottest) }    
+    before { StoryRepository.any_instance.should_receive(:hottest) }
     before { get :index }
 
     context 'assigns' do

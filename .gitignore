@@ -19,14 +19,9 @@
 vendor/bundle
 public/assets
 
-# templates to be created per-site
-app/views/home/privacy.*
-app/views/home/about.*
-
 # files added in production
 lib/tasks/deploy.rake
 config/initializers/production.rb
-config/database.yml
-config/initializers/secret_token.rb
+config/*.yml
 config/*.sphinx.conf
 config/unicorn.conf.rb

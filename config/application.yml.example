@@ -1,0 +1,6 @@
+development:
+  domain: news.wayfare.io
+  site_name: Wayfare News
+  secret_key_base: 302295efa1c3db53f4ae4ca6b26bfc2f2fcb41979255b74e62c7bd4f599ce2141252e0afd3a17cc94b0f08d62c8346b83e1dce336562ec738819e976fd95af1d
+test:
+  secret_key_base: 302295efa1c3db53f4ae4ca6b26bfc2f2fcb41979255b74e62c7bd4f599ce2141252e0afd3a17cc94b0f08d62c8346b83e1dce336562ec738819e976fd95af1d

@@ -3,10 +3,16 @@
 <head>
   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-  <link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon.png" />
-  <link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon.png" />
-  <link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-144.png" />
-  <link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144.png" />
+  <link rel="shortcut icon" href="/favicons/favicon16.png" type="image/png" sizes="16x16">
+  <link rel="shortcut icon" href="/favicons/favicon32.png" type="image/png" sizes="32x32">
+  <link rel="shortcut icon" href="/favicons/favicon48.png" type="image/png" sizes="48x48">
+  <link rel="shortcut icon" href="/favicons/favicon64.png" type="image/png" sizes="64x64">
+  <link rel="shortcut icon" href="/favicons/favicon128.png" type="image/png" sizes="128x128">
+  <link rel="shortcut icon" href="/favicons/favicon256.png" type="image/png" sizes="256x256">
+  <link rel="apple-touch-icon" href="/touch-icons/touch60.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/touch-icons/touch76.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/touch-icons/touch120.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/touch-icons/touch152.png">
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="robots" content="noarchive,noodp,noydir" />
   <meta name="referrer" content="always" />
@@ -33,8 +39,10 @@
   <div id="wrapper">
     <div id="header">
       <div id="headerleft">
-        <a id="l_holder" style="background-color: #<%= sprintf("%02x%02x%02x",
+        <!-- a id="l_holder" style="background-color: #<%= sprintf("%02x%02x%02x",
         [ 255, (@traffic * 7).floor + 50.0 ].min, 0, 0) %>;" href="/"
+        title="<%= Rails.application.name %> (<%= @traffic.to_i %>)"></a -->
+        <a id="l_holder" href="/"
         title="<%= Rails.application.name %> (<%= @traffic.to_i %>)"></a>
 
         <% links = {
@@ -48,7 +56,9 @@
             "/stories/new" => "Submit Story" }) %>
         <% end %>
 
-        <% links.merge!({ "/search" => "Search" }) %>
+        <%- if Lobsters::Config[:enable_search] -%>
+          <% links.merge!({ "/search" => "Search" }) %>
+        <%- end -%>
 
         <% if @cur_url.present? && !links.keys.include?(@cur_url) &&
         @heading.present? %>

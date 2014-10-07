@@ -17,15 +17,12 @@ module Lobsters
 
     # Set Time.zone default to the specified zone and make Active Record auto-convert to this zone.
     # Run "rake -D time" for a list of tasks for finding time zone names. Default is UTC.
-    config.time_zone = 'Central Time (US & Canada)'
+    config.time_zone = 'Pacific Time (US & Canada)'
 
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
     config.i18n.enforce_available_locales = true
-
-    # Future Rails version will disable implicit joins, so we'll be prepared.
-    config.active_record.disable_implicit_join_references = true
 
     # Raise an exception when using mass assignment with unpermitted attributes
     config.action_controller.action_on_unpermitted_parameters = :raise
@@ -52,16 +49,16 @@ class << Rails.application
   end
 
   def domain
-    "example.com"
+    Lobsters::Config[:domain] || "example.com"
   end
 
   def name
-    "Example News"
+    Lobsters::Config[:site_name] || "News"
   end
 
   # used as mailing list prefix and countinual prefix, cannot have spaces
   def shortname
-    name.downcase.gsub(/[^a-z]/, "")
+    name.downcase.gsub(/[^a-z]/, "-")
   end
 end
 
