@@ -29,6 +29,22 @@ module Lobsters
 
     config.cache_store = :file_store, "#{config.root}/tmp/cache/"
 
+    config.action_mailer.default_url_options = {
+      host: Lobsters::Config[:domain],
+      protocol: "https"
+    }
+    config.action_mailer.default_options = { from: %Q{"Wayfare" <no-reply@#{Lobsters::Config[:domain]}>} }
+    config.action_mailer.delivery_method = :smtp
+    config.action_mailer.smtp_settings = {
+      address:              "smtp.mandrillapp.com",
+      port:                 587,
+      enable_starttls_auto: true,
+      user_name:            Lobsters::Config[:mandrill_user_name],
+      password:             Lobsters::Config[:mandrill_api_key],
+      authentication:       "login",
+      domain:               "news.wayfare.io"
+    }
+
     config.after_initialize do
       Rails.application.routes.default_url_options[:host] =
         Rails.application.domain
