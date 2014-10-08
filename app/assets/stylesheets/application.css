@@ -71,6 +71,11 @@ a.tag_meta {
 	border-color: #c8c8c8;
 }
 
+a.tag_is_privileged {
+	background-color: #b8e986;
+	border-color: #417505;
+}
+
 span.fakea {
 	cursor: pointer;
 	text-decoration: underline;

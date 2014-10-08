@@ -31,11 +31,15 @@ class Tag < ActiveRecord::Base
     Tag.active.order(:tag).accessible_to(user).map{|t|
       t.stories_count = counts[t.id].to_i
       t
-    } 
+    }
   end
 
   def css_class
-    "tag tag_#{self.tag}" << (self.is_media?? " tag_is_media" : "")
+    classes = ["tag"]
+    classes << "tag_#{self.tag}"
+    classes << "tag_is_media" if is_media?
+    classes << "tag_is_privileged" if privileged?
+    classes.join(" ")
   end
 
   def valid_for?(user)
