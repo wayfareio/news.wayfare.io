@@ -210,14 +210,14 @@ class CommentsController < ApplicationController
   def threads
     if params[:user]
       @showing_user = User.where(:username => params[:user]).first!
-      @heading = @title = "Threads for #{@showing_user.username}"
+      @heading = @title = "Comments for #{@showing_user.username}"
       @cur_url = "/threads/#{@showing_user.username}"
     elsif !@user
       # TODO: show all recent threads
       return redirect_to "/login"
     else
       @showing_user = @user
-      @heading = @title = "Your Threads"
+      @heading = @title = "Your Comments"
       @cur_url = "/threads"
     end
 
