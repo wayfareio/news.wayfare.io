@@ -225,7 +225,7 @@ DEPENDENCIES
   mysql2 (>= 0.3.14)
   nokogiri (= 1.6.1)
   oauth
-  rails (~> 4.1.6)
+  rails (~> 4.1.7)
   rdiscount
   rspec-its
   rspec-rails (~> 2.6)
